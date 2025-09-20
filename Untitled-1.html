@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tulipanes Amarillos</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      flex-direction: column;
+      color: white;
+    }
+    svg {
+      width: 80%;
+      max-width: 700px;
+    }
+    .tulip {
+      transform-origin: bottom center;
+      animation: sway 5s ease-in-out infinite alternate;
+    }
+    @keyframes sway {
+      from { transform: rotate(-2deg); }
+      to { transform: rotate(2deg); }
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 12px;
+      background: #ffcc00;
+      color: black;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+    }
+    button:hover {
+      background: #ffdb4d;
+    }
+    #message {
+      display: none;
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffcc00;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 300 300">
+    <!-- Tulipán central -->
+    <g class="tulip">
+      <line x1="150" y1="300" x2="150" y2="150" stroke="#228B22" stroke-width="5"/>
+      <ellipse cx="150" cy="130" rx="20" ry="30" fill="gold" />
+      <ellipse cx="135" cy="140" rx="15" ry="25" fill="gold" />
+      <ellipse cx="165" cy="140" rx="15" ry="25" fill="gold" />
+    </g>
+    <!-- Tulipán izquierdo -->
+    <g class="tulip" style="animation-delay:1s;">
+      <line x1="100" y1="300" x2="100" y2="170" stroke="#228B22" stroke-width="5"/>
+      <ellipse cx="100" cy="150" rx="18" ry="28" fill="gold" />
+      <ellipse cx="85" cy="160" rx="12" ry="22" fill="gold" />
+      <ellipse cx="115" cy="160" rx="12" ry="22" fill="gold" />
+    </g>
+    <!-- Tulipán derecho -->
+    <g class="tulip" style="animation-delay:2s;">
+      <line x1="200" y1="300" x2="200" y2="170" stroke="#228B22" stroke-width="5"/>
+      <ellipse cx="200" cy="150" rx="18" ry="28" fill="gold" />
+      <ellipse cx="185" cy="160" rx="12" ry="22" fill="gold" />
+      <ellipse cx="215" cy="160" rx="12" ry="22" fill="gold" />
+    </g>
+  </svg>
+
+  <button onclick="playMusic()">Aprieta</button>
+  <div id="player"></div>
+  <div id="message">🌼 Unas flores para ti 🌼<br>💛 TQM 💛</div>
+
+  <script>
+    function playMusic() {
+      const playerDiv = document.getElementById('player');
+      if (!playerDiv.innerHTML) {
+        playerDiv.innerHTML = `<iframe width="0" height="0"
+          src="https://www.youtube.com/embed/qmtLI2RoZJo?autoplay=1"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      }
+      document.getElementById("message").style.display = "block";
+    }
+  </script>
+</body>
+</html>
